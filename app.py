@@ -8,6 +8,11 @@ from nltk.stem.porter import PorterStemmer
 
 ps = PorterStemmer()
 
+try:
+    nltk.data.find("tokenizers/punkt")
+except LookupError:
+    nltk.download("punkt", download_dir="nltk_data")
+
 
 
 
