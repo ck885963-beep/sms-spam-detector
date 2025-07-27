@@ -1,3 +1,4 @@
+import streamlit as st
 from flask import Flask, request, jsonify
 import joblib
 import sklearn
@@ -21,4 +22,11 @@ def predict():
 
     vect_msg = vectorizer.transform([message])
     prediction = model.predict(vect_msg)
+
+    st.title("Email/SMS Spam Classsifier")
+
+    input_sms = st.text_area("Enter the message")
+    if message:
+        st.write("Prediction: SPAM or HAM here")
+
     return jsonify({'message': message, 'is_spam': bool(prediction[0])})
